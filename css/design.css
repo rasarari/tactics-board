@@ -1,0 +1,20 @@
+body {
+  background: #7dd67d;
+  padding: 10px;
+  text-align: center;
+  margin: 10px auto;
+}
+
+.drag-and-drop {
+  position: absolute;
+}
+
+.frame {
+  border:1px solid black;  /* 1pxの黒の枠を付ける */
+  padding: 10px;
+  width: 850px;
+  height: 545px;
+  margin: 10px auto;
+  background-image: url(../pic/picth.svg);
+  background-size: 100%;
+}
