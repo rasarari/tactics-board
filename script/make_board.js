@@ -1,8 +1,10 @@
 var left = localStorage.getItem("left");
 var right = localStorage.getItem("right");
 
+const Frame = document.getElementsByClassName("frame");
+
 //選手を動的に配置する(left_team)
-for(var i = 0; i < 26; i++){
+for(var i = 0; i < 28; i++){
   var imgbox = document.getElementById("imgbox");
   var new_elem = document.createElement("img");
   new_elem.src = "../pic/" + left + "/" + i + ".svg"; //leftのチーム名でsvgファイルを呼び出す
@@ -12,7 +14,7 @@ for(var i = 0; i < 26; i++){
 }
 
 //選手を動的に配置する(right_team)
-for(var i = 0; i < 25; i++){
+for(var i = 0; i < 28; i++){
   var imgbox = document.getElementById("imgbox");
   var new_elem = document.createElement("img");
   new_elem.src = "../pic/" + right + "/" + i + ".svg"; //leftのチーム名でsvgファイルを呼び出す
@@ -23,13 +25,25 @@ for(var i = 0; i < 25; i++){
 
 var elements = document.getElementsByClassName("drag-and-drop");
 
+//初期位置を調整
 var count = 0;
-for(var i = 0; i < elements.length; i++){
+elements[0].style.top = Frame[0].clientHeight*2/3 + "px";
+elements[0].style.left = Frame[0].clientWidth*5/7 + "px";
+for(var i = 1; i <= 28; i++){
   if(count == 4){
     count = 0;
   }
-  elements[i].style.top = 120 + 60*Math.floor(i/4) + "px";
+  elements[i].style.top = 120 + 60*Math.floor((i-1)/4) + "px";
   elements[i].style.left = 20 + 40*count + "px";
+  count++;
+}
+count = 0;
+for(var i = 29; i < elements.length; i++){
+  if(count == 4){
+    count = 0;
+  }
+  elements[i].style.top = 120 + 60*Math.floor((i-29)/4) + "px";
+  elements[i].style.left = window.innerWidth + 40*count - 200 + "px";
   count++;
 }
 
